@@ -2,7 +2,7 @@
 //
 // Created by Devin Jhu
 // Created on May 2022
-// The loop adder
+// The loop multiplier
 
 #include <iostream>
 
@@ -10,8 +10,8 @@ int main() {
     // this program shows the sum of all numbers from 0 to number
     std::string intNumber;
     int number;
-    int sum = 0;
-    int counter = 0;
+    int sum = 1;
+    int counter = 1;
 
 
     // input
@@ -22,14 +22,17 @@ int main() {
     // process & output
     try {
         number = std::stoi(intNumber);
-        while (counter < number) {
-            counter = counter + 1;
-            sum = sum + counter;
+        if (number > 0) {
+            do {
+                sum = sum * counter;
+                counter = counter + 1;
+                } while (counter <= number);
+            std::cout << "" << number << "! = " "" << sum << std::endl;
+        } else {
+            std::cout << "Not a positive number" << std::endl;
         }
-        std::cout << "The sum of numbers to "
-        << number << " is " << sum << std::endl;
     } catch (std::invalid_argument) {
-        std::cout << "Not an integer";
+        std::cout << "Not a number";
     }
     std::cout << "\nDone." << std::endl;
 }
